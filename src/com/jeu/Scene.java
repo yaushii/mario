@@ -16,6 +16,12 @@ public class Scene extends JPanel {
 
 	private ImageIcon icoMario;
 	private Image imgMario;
+	
+	private ImageIcon icoChateau1;
+	private Image imgchateau;
+	
+	private ImageIcon icoDepart;
+	private Image imgDepart;
 
 	private int xFont1; // placer le fond
 	private int xFont2;
@@ -32,11 +38,14 @@ public class Scene extends JPanel {
 
 		// recupere les image avec imageicon
 		icoFond = new ImageIcon(getClass().getResource("/image/fondEcran.png"));
+		icoChateau1 = new ImageIcon(getClass().getResource("/image/chateau1.png"));
+		icoDepart = new ImageIcon(getClass().getResource("/image/depart.png"));
+		icoMario = new ImageIcon(getClass().getResource("/image/marioMarcheDroite.png"));
 		// associe l'icone a image
+		this.imgDepart = this.icoDepart.getImage();
+		this.imgchateau = this.icoChateau1.getImage();
 		this.imgFond1 = this.icoFond.getImage();
 		this.imgFond2 = this.icoFond.getImage();
-		icoMario = new ImageIcon(getClass().getResource(
-				"/image/marioMarcheDroite.png"));
 		this.imgMario = this.icoMario.getImage();
 		this.setFocusable(true);
 		this.requestFocusInWindow();
@@ -85,8 +94,10 @@ public class Scene extends JPanel {
 		g2.drawImage(this.imgFond1, this.xFont1, 0, null);// dessin de l'image
 															// de fond
 		g2.drawImage(this.imgFond2, this.xFont2, 0, null);
-		g2.drawImage(imgMario, 300, 245, null); // dessine et place le mario sur
-												// le fond
+		g2.drawImage(imgMario, 300, 245, null); // dessine et place le mario sur le fond
+		g2.drawImage(imgDepart, 220, 234,null);
+		g2.drawImage(imgchateau, 10, 95,null);
+												
 
 	}
 }

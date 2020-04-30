@@ -10,6 +10,11 @@ public class Clavier implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()== KeyEvent.VK_RIGHT){
 			Main.scene.setDx(1);
+		if(Main.scene.getxPos()== -1){
+			Main.scene.setxPos(0);
+			Main.scene.setxFont1(-50);
+			Main.scene.setxFont2(750);
+		}
 		}else if (  e.getKeyCode() == KeyEvent.VK_LEFT){
 			Main.scene.setDx(-1);
 		}

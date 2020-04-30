@@ -27,6 +27,7 @@ public class Scene extends JPanel {
 	private int xFont2;
 	private int dx;
 
+	private int xPos;
 	// ****** CONSTRUCTEUR ******//
 	public Scene() {
 
@@ -35,6 +36,7 @@ public class Scene extends JPanel {
 		this.xFont1 = -50;
 		this.xFont2 = 750;
 		this.dx = 0;
+		this.xPos = -1;
 
 		// recupere les image avec imageicon
 		icoFond = new ImageIcon(getClass().getResource("/image/fondEcran.png"));
@@ -57,21 +59,44 @@ public class Scene extends JPanel {
 
 	}
 
+	
+
 	// ***** GETTERS *****//
 	public int getDx() {
 		return dx;
+	}
+	
+	public int getxPos() {
+		return xPos;
+	}
+	public void setxPos(int xPos) {
+		this.xPos = xPos;
 	}
 
 	// ***** SETTERS *****//
 	public void setDx(int dx) {
 		this.dx = dx;
 	}
+	
+	public void setxFont1(int xFont1) {
+		this.xFont1 = xFont1;
+	}
+	
+	public void setxFont2(int xFont2) {
+		this.xFont2 = xFont2;
+	}
+	
 
 	// ******* METHODES ******//
 
+
+
 	public void deplacementFond() {
+		if (this.xPos >= 0){
+			this.xPos = this.xPos + this.dx;
 		this.xFont1 = this.xFont1 - this.dx;
 		this.xFont2 = this.xFont2 - this.dx;
+		}
 
 		if (this.xFont1 == -800) {
 			this.xFont1 = 800;
@@ -95,8 +120,8 @@ public class Scene extends JPanel {
 															// de fond
 		g2.drawImage(this.imgFond2, this.xFont2, 0, null);
 		g2.drawImage(imgMario, 300, 245, null); // dessine et place le mario sur le fond
-		g2.drawImage(imgDepart, 220, 234,null);
-		g2.drawImage(imgchateau, 10, 95,null);
+		g2.drawImage(imgDepart, 220 - this.xPos, 234,null);
+		g2.drawImage(imgchateau, 10 - this.xPos, 95,null);
 												
 
 	}

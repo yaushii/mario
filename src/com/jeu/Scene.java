@@ -7,15 +7,14 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import com.Personage.Mario;
+
 @SuppressWarnings("serial")
 public class Scene extends JPanel {
 
 	private ImageIcon icoFond; // permet de stocker l'image de fond
 	private Image imgFond1;
 	private Image imgFond2;
-
-	private ImageIcon icoMario;
-	private Image imgMario;
 	
 	private ImageIcon icoChateau1;
 	private Image imgchateau;
@@ -27,7 +26,12 @@ public class Scene extends JPanel {
 	private int xFont2;
 	private int dx;
 
-	private int xPos;
+	private int xPos; // position absolue
+	
+	public Mario mario; 
+	
+	
+	
 	// ****** CONSTRUCTEUR ******//
 	public Scene() {
 
@@ -42,13 +46,17 @@ public class Scene extends JPanel {
 		icoFond = new ImageIcon(getClass().getResource("/image/fondEcran.png"));
 		icoChateau1 = new ImageIcon(getClass().getResource("/image/chateau1.png"));
 		icoDepart = new ImageIcon(getClass().getResource("/image/depart.png"));
-		icoMario = new ImageIcon(getClass().getResource("/image/marioMarcheDroite.png"));
+		
 		// associe l'icone a image
 		this.imgDepart = this.icoDepart.getImage();
 		this.imgchateau = this.icoChateau1.getImage();
 		this.imgFond1 = this.icoFond.getImage();
 		this.imgFond2 = this.icoFond.getImage();
-		this.imgMario = this.icoMario.getImage();
+		
+		
+		mario = new Mario(300, 245);
+		
+		
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 
@@ -90,15 +98,17 @@ public class Scene extends JPanel {
 	// ******* METHODES ******//
 
 
-// permet de gerer les deplacemen du personnage en faisant bouger le font.
+
 	public void deplacementFond() {
-		// permet de fixé le chateau et le panneau de depart
+		
+		// mise a jour des position des éléments du jeu lors du deplacement de mario
 		if (this.xPos >= 0){
 			this.xPos = this.xPos + this.dx;
 		this.xFont1 = this.xFont1 - this.dx;
 		this.xFont2 = this.xFont2 - this.dx;
 		}
-// permet de faire defillé le fond en fonction de ca position 
+
+		// permanance du fond
 		if (this.xFont1 == -800) {
 			this.xFont1 = 800;
 		} else if (this.xFont2 == -800) {
@@ -120,9 +130,9 @@ public class Scene extends JPanel {
 		g2.drawImage(this.imgFond1, this.xFont1, 0, null);// dessin de l'image
 															// de fond
 		g2.drawImage(this.imgFond2, this.xFont2, 0, null);
-		g2.drawImage(imgMario, 300, 245, null); // dessine et place le mario sur le fond
-		g2.drawImage(imgDepart, 220 - this.xPos, 234,null);
-		g2.drawImage(imgchateau, 10 - this.xPos, 95,null);
+		g2.drawImage(this.mario.marche("mario", 30), 300, 245, null); // dessine et place le mario sur le fond
+		g2.drawImage(this.imgDepart, 220 - this.xPos, 234,null);
+		g2.drawImage(this.imgchateau, 10 - this.xPos, 95,null);
 												
 
 	}

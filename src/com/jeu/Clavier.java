@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Clavier implements KeyListener {
 
 	@Override
-	// quand on presse la touche
+	// quand on presse la fleche droite vas vers la droite et gauche quand fleche gauche
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()== KeyEvent.VK_RIGHT){
 			Main.scene.setDx(1);

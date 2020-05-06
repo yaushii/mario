@@ -90,14 +90,15 @@ public class Scene extends JPanel {
 	// ******* METHODES ******//
 
 
-
+// permet de gerer les deplacemen du personnage en faisant bouger le font.
 	public void deplacementFond() {
+		// permet de fixé le chateau et le panneau de depart
 		if (this.xPos >= 0){
 			this.xPos = this.xPos + this.dx;
 		this.xFont1 = this.xFont1 - this.dx;
 		this.xFont2 = this.xFont2 - this.dx;
 		}
-
+// permet de faire defillé le fond en fonction de ca position 
 		if (this.xFont1 == -800) {
 			this.xFont1 = 800;
 		} else if (this.xFont2 == -800) {

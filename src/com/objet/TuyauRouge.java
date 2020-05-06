@@ -10,10 +10,9 @@ public class TuyauRouge extends Objet {
 	private ImageIcon icoTuyau;
 
 	public TuyauRouge(int x, int y) {
-		super(x, y, 41, 65);
+		super(x, y, 43, 65);
 
-		this.icoTuyau = new ImageIcon(getClass().getResource(
-				"/image/TuyauRouge.png"));
+		this.icoTuyau = new ImageIcon(getClass().getResource("/image/tuyauRouge.png"));
 		this.imgTuyau = this.icoTuyau.getImage();
 	}
 

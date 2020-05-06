@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import com.Personage.Mario;
+import com.objet.Bloc;
+import com.objet.TuyauRouge;
 
 @SuppressWarnings("serial")
 public class Scene extends JPanel {
@@ -29,8 +31,8 @@ public class Scene extends JPanel {
 	private int xPos; // position absolue
 	
 	public Mario mario; 
-	
-	
+	public TuyauRouge tuyau1;
+	public Bloc bloc1;
 	
 	// ****** CONSTRUCTEUR ******//
 	public Scene() {
@@ -55,6 +57,8 @@ public class Scene extends JPanel {
 		
 		
 		mario = new Mario(300, 245);
+		bloc1 = new Bloc (400, 180);
+		tuyau1 = new TuyauRouge(600, 230);
 		
 		
 		this.setFocusable(true);
@@ -133,7 +137,8 @@ public class Scene extends JPanel {
 		g2.drawImage(this.mario.marche("mario", 30), 300, 245, null); // dessine et place le mario sur le fond
 		g2.drawImage(this.imgDepart, 220 - this.xPos, 234,null);
 		g2.drawImage(this.imgchateau, 10 - this.xPos, 95,null);
-												
+		g2.drawImage(this.tuyau1.getImgTuyau(),this.tuyau1.getX()- this.xPos,this.tuyau1.getY(), null);										
+		g2.drawImage(this.bloc1.getImgBloc(),this.bloc1.getX()- this.xPos,this.bloc1.getY(), null);										
 
 	}
 }

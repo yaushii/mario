@@ -5,6 +5,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.jeu.Main;
+import com.objet.Objet;
+
 
 public class Personnage {
 
@@ -81,9 +83,8 @@ public class Personnage {
 	}
 	
 	//***** METHODE*****//
-	
 	public Image marche(String nom, int frequence) {
-		
+				
 		String str;
 		ImageIcon ico;
 		Image img;
@@ -93,25 +94,33 @@ public class Personnage {
 				str = "/image/"+ nom + "ArretDroite.png";
 			}else {
 				str = "/image/"+ nom + "ArretGauche.png";}
-							
+			
 		}else { this.compteur++;
 		if(this.compteur / frequence == 0) {
 			if(this.versDroite == true) {str = "/image/"+ nom + "ArretDroite.png";}
 			else {str = "/image/"+ nom + "ArretGauche.png";}
 		}else {
 			if(this.versDroite == true) {str = "/image/"+ nom + "MarcheDroite.png";}
-		else {
-			str = "/image/"+ nom + "MarcheGauche.png";}
+			else {
+				str = "/image/"+ nom + "MarcheGauche.png";}
 		}
 		if (this.compteur == 2 * frequence) {
 			this.compteur =0;}
-			
+		
+		
 		}
+		
+		
 		// Affichage de l'image du personnage
 		ico = new ImageIcon(getClass().getResource(str));
 		img = ico.getImage();
 		return img;
 		
 	}
-		
-}
+
+	public boolean contactAvant(Objet objet){
+		if(this.isVersDroite() == true){
+		if(this.x + this.largeur < objet.getX() || this.x + this.largeur > objet.getX() + 5 || this.y + this.hauteur <= objet.getY()|| this.y >= objet.getY() + objet.getHauteur()){return false;}
+	 else{ return true;}
+}else{return false;}
+	}}

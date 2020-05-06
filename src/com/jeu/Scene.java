@@ -26,13 +26,15 @@ public class Scene extends JPanel {
 
 	private int xFont1; // placer le fond
 	private int xFont2;
-	private int dx;
+	private int dx;// gere le deplacement du fond
 
 	private int xPos; // position absolue
 	
 	public Mario mario; 
-	public TuyauRouge tuyau1;
 	public Bloc bloc1;
+	public TuyauRouge tuyau1;
+	
+	
 	
 	// ****** CONSTRUCTEUR ******//
 	public Scene() {
@@ -70,8 +72,6 @@ public class Scene extends JPanel {
 		chronoEcran.start();
 
 	}
-
-	
 
 	// ***** GETTERS *****//
 	public int getDx() {
@@ -129,16 +129,23 @@ public class Scene extends JPanel {
 
 		super.paintComponent(g);
 		Graphics g2 = (Graphics2D) g;
-
+	
+		
+		// detection contact
+		if(this.mario.contactAvant(tuyau1) == true){
+			this.mario.setMarche(false);
+			this.dx = 0;
+		}
 		this.deplacementFond();
+		this.tuyau1.deplacement();
+		
 		g2.drawImage(this.imgFond1, this.xFont1, 0, null);// dessin de l'image
 															// de fond
 		g2.drawImage(this.imgFond2, this.xFont2, 0, null);
 		g2.drawImage(this.mario.marche("mario", 30), 300, 245, null); // dessine et place le mario sur le fond
 		g2.drawImage(this.imgDepart, 220 - this.xPos, 234,null);
 		g2.drawImage(this.imgchateau, 10 - this.xPos, 95,null);
-		g2.drawImage(this.tuyau1.getImgTuyau(),this.tuyau1.getX()- this.xPos,this.tuyau1.getY(), null);										
+		g2.drawImage(this.tuyau1.getImgTuyau(),this.tuyau1.getX(),this.tuyau1.getY(), null);										
 		g2.drawImage(this.bloc1.getImgBloc(),this.bloc1.getX()- this.xPos,this.bloc1.getY(), null);										
-
 	}
 }

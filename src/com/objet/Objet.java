@@ -1,5 +1,7 @@
 package com.objet;
 
+import com.jeu.Main;
+
 public class Objet {
 
 	private int largeur, hauteur;
@@ -48,4 +50,11 @@ public class Objet {
 		this.y = y;
 	}
 
+
+/***** METHODE ******/
+public void deplacement(){
+	if(Main.scene.getxPos()>= 0){
+		this.x = this.x - Main.scene.getDx();	}
+	
+}
 }

@@ -118,9 +118,37 @@ public class Personnage {
 		
 	}
 
-	public boolean contactAvant(Objet objet){
-		if(this.isVersDroite() == true){
-		if(this.x + this.largeur < objet.getX() || this.x + this.largeur > objet.getX() + 5 || this.y + this.hauteur <= objet.getY()|| this.y >= objet.getY() + objet.getHauteur()){return false;}
-	 else{ return true;}
-}else{return false;}
-	}}
+
+protected boolean contactAvant(Objet objet){
+	if (this.x + this.largeur < objet.getX() || 
+		this.x + this.largeur > objet.getX() + 5 || 
+		this.y + this.hauteur <= objet.getY()|| 
+		this.y >= objet.getY() + objet.getHauteur()){return false;}	
+else{return true;}
+	
+}
+protected boolean contactArriere(Objet objet){
+	if (this.x > this.largeur + objet.getX() || 
+		this.x + this.largeur < objet.getX() + objet.getLargeur() - 5|| 
+		this.y + this.hauteur <= objet.getY()|| 
+		this.y >= objet.getY() + objet.getHauteur()){return false;}	
+else{return true;}
+	
+}
+protected boolean contactDessous(Objet objet){
+	if (this.x + this.largeur < objet.getX() + 5 ||
+		this.x > objet.getX() + objet.getLargeur() - 5 ||
+		this.y + this.hauteur < objet.getY()|| 
+		this.y + this.hauteur >  objet.getY()+ 5){return false;}	
+else{return true;}
+	
+}
+protected boolean contactDessus(Objet objet){
+	if (this.x + this.largeur < objet.getX() +5 || 
+		this.x > objet.getX() + objet.getLargeur() - 5 || 
+		this.y < objet.getY() + objet.getHauteur() ||
+		this.y > objet.getY() + objet.getHauteur()+ 5){return false;}	
+else{return true;}
+	
+}
+}

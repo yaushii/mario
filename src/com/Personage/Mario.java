@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.jeu.Main;
+import com.objet.Objet;
 
 public class Mario extends Personnage {
 
@@ -77,4 +78,24 @@ public class Mario extends Personnage {
 		img = ico.getImage();
 		return img;
 	}
-	}
+	public void contact (Objet objet){
+		// contact horizontal
+		if((super.contactAvant(objet) == true && this.isVersDroite()== true) || (super.contactArriere(objet)== true && this.isVersDroite() == false)) {Main.scene.setDx(0);
+		this.setMarche(false);}
+		
+	// contact avec un objet en dessous
+	if (super.contactDessous(objet)== true && this.saut == true){
+		Main.scene.setySol(objet.getY());
+	}else if(super.contactDessous(objet) == false){
+		Main.scene.setySol(293);
+		if(this.saut == false){this.setY(243);}
+		}
+	
+	// contact au dessus
+	if(super.contactDessous(objet)== true){
+	Main.scene.setHauteurPlafond(objet.getY() + objet.getHauteur());	
+		
+	}else if (super.contactDessus(objet) == false && this.saut == false){
+		Main.scene.setHauteurPlafond(0);}
+	}}
+	

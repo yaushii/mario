@@ -10,7 +10,7 @@ public class Bloc extends Objet {
 	private ImageIcon icoBloc;
 
 	public Bloc(int x, int y) {
-		super(x, y, 43, 65);
+		super(x, y, 30, 30);
 
 		this.icoBloc = new ImageIcon(getClass().getResource("/image/bloc.png"));
 		this.imgBloc = this.icoBloc.getImage();

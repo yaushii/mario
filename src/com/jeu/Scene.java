@@ -97,6 +97,16 @@ public class Scene extends JPanel {
 	public void setxPos(int xPos) {
 		this.xPos = xPos;
 	}
+		
+	public void setySol(int ySol) {
+		this.ySol = ySol;
+	}
+
+	
+	public void setHauteurPlafond(int hauteurPlafond) {
+		this.hauteurPlafond = hauteurPlafond;
+	}
+
 	public void setDx(int dx) {
 		this.dx = dx;
 	}
@@ -143,13 +153,12 @@ public class Scene extends JPanel {
 	
 		
 		// detection contact
-		if(this.mario.contactAvant(tuyau1) == true){
-			this.mario.setMarche(false);
-			this.dx = 0;
-		}
+		this.mario.contact(bloc1);
+		
+		
 		this.deplacementFond();
 		this.tuyau1.deplacement();
-		
+		this.bloc1.deplacement();
 		g2.drawImage(this.imgFond1, this.xFont1, 0, null);// dessin de l'image
 															// de fond
 		g2.drawImage(this.imgFond2, this.xFont2, 0, null);
@@ -158,6 +167,6 @@ public class Scene extends JPanel {
 		g2.drawImage(this.imgDepart, 220 - this.xPos, 234,null);
 		g2.drawImage(this.imgchateau, 10 - this.xPos, 95,null);
 		g2.drawImage(this.tuyau1.getImgTuyau(),this.tuyau1.getX(),this.tuyau1.getY(), null);										
-		g2.drawImage(this.bloc1.getImgBloc(),this.bloc1.getX()- this.xPos,this.bloc1.getY(), null);										
+		g2.drawImage(this.bloc1.getImgBloc(),this.bloc1.getX(),this.bloc1.getY(), null);										
 	}
 }
